@@ -63,9 +63,7 @@
       (defun spacemacs/go-run-test-current-function ()
         (interactive)
         (if (string-match "_test\\.go" buffer-file-name)
-            (let ((test-method (if go-use-gocheck-for-testing
-                                   "-check.f"
-                                 "-run")))
+            (let ((test-method (if go-use-gocheck-for-testing "-run")))
               (save-excursion
                   (re-search-backward "^func[ ]+\\(([[:alnum:]]*?[ ]?[*]?[[:alnum:]]+)[ ]+\\)?\\(Test[[:alnum:]_]+\\)(.*)")
                   (spacemacs/go-run-tests (concat test-method "='" (match-string-no-properties 2) "'"))))
